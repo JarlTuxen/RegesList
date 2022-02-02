@@ -9,6 +9,8 @@ public class Main {
         LinkedList<String> myList = new LinkedList<>(List.of(new String[]{"a", "bb", "ccc"}));
         System.out.println(longest(myList));
 
+        /* Reges 11.3 og 11.4
+
         //removeInRange
         Integer[] rangeInt = {0, 0, 2, 0, 4, 0, 6, 0, 8, 0, 10, 0, 12, 0, 14, 0, 16};
         List<Integer> rangeList = new LinkedList<>(List.of(rangeInt));
@@ -20,6 +22,8 @@ public class Main {
         List<Integer> partionList = new LinkedList<>(List.of(unsortedInt));
         partition(partionList, 5);
         System.out.println(partionList);
+
+         */
     }
 
     public static String longest(LinkedList<String> list){
@@ -34,6 +38,7 @@ public class Main {
         return longest;
     }
 
+    // øvelse 11.3
     public static void removeInRange(List<Integer> list, int value, int min, int max) {
         Iterator<Integer> itr = list.iterator();
         for (int i = 0; i < min; i++) {
@@ -46,6 +51,7 @@ public class Main {
         }
     }
 
+    // øvelse 11.4
     public static void partition(List<Integer> list, int value) {
         // partition original list into a temporary second list
         List<Integer> temp = new LinkedList<>();
@@ -60,6 +66,7 @@ public class Main {
         }
 
         // copy temp back to original list
+        // can be replaced with Collection.addAll
         list.clear();
         for (Integer i : temp) {
             list.add(i);
