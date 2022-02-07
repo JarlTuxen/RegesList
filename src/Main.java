@@ -1,20 +1,17 @@
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
         //find longest word in list
-        LinkedList<String> myList = new LinkedList<>(List.of(new String[]{"a", "bb", "ccc"}));
+        List<String> myList = new LinkedList<>(List.of(new String[]{"a", "bb", "ccc"}));
         myList.add("dddd");
         System.out.println(longest(myList));
 
-        // Reges 11.3 og 11.4
         // Reges 11.3
         //removeInRange
         Integer[] rangeInt = {0, 0, 2, 0, 4, 0, 6, 0, 8, 0, 10, 0, 12, 0, 14, 0, 16};
-        LinkedList<Integer> rangeList = new LinkedList<>(List.of(rangeInt));
+        List<Integer> rangeList = new LinkedList<>(List.of(rangeInt));
         removeInRange(rangeList, 0, 5, 13);
         System.out.println(rangeList);
 
@@ -27,7 +24,7 @@ public class Main {
         //
     }
 
-    public static String longest(LinkedList<String> list){
+    public static String longest(List<String> list){
         Iterator<String> itr = list.iterator();
         String longest = itr.next(); //første element
         while (itr.hasNext()){
@@ -39,10 +36,11 @@ public class Main {
         return longest;
     }
 
-    // øvelse 11.3
-    public static void removeInRange(LinkedList list, int value, int min, int max) {
+    // Reges 11.3
+    public static void removeInRange(List<Integer> list, int value, int min, int max) {
         Iterator<Integer> itr = list.iterator();
         for (int i = 0; i < min; i++) {
+            //skip the elements until starting point reached
             itr.next();
         }
         for (int i = min; i < max; i++) {
@@ -52,7 +50,7 @@ public class Main {
         }
     }
 
-    // øvelse 11.4
+    // Reges 11.4
     public static void partition(List<Integer> list, int value) {
         // partition original list into a temporary second list
         List<Integer> temp = new LinkedList<>();
@@ -60,8 +58,10 @@ public class Main {
         while (itr.hasNext()) {
             int element = itr.next();
             if (element < value) {
+                //add element at front of temp list
                 temp.add(0, element);
             } else {
+                //add element at end of temp list
                 temp.add(element);
             }
         }
@@ -72,5 +72,6 @@ public class Main {
         for (Integer i : temp) {
             list.add(i);
         }
+
     }
 }
